@@ -64,6 +64,8 @@ en:
         label: Type
       atm: 
         label: ATM
+      backrest: 
+        label: Backrest
       barrier: 
         label: Type
       bicycle_parking: 
@@ -248,6 +250,8 @@ en:
         label: Type
       trail_visibility: 
         label: Trail Visibility
+      vending: 
+        label: Type of Goods
       water: 
         label: Type
       waterway: 
@@ -318,6 +322,9 @@ en:
       amenity/bicycle_rental: 
         name: Bicycle Rental
         terms: "<translate with synonyms or related terms for 'Bicycle Rental', separated by commas>"
+      amenity/boat_rental: 
+        name: Boat Rental
+        terms: "<translate with synonyms or related terms for 'Boat Rental', separated by commas>"
       amenity/cafe: 
         name: Cafe
         terms: "<translate with synonyms or related terms for 'Cafe', separated by commas>"
@@ -438,6 +445,9 @@ en:
       amenity/university: 
         name: University
         terms: "<translate with synonyms or related terms for 'University', separated by commas>"
+      amenity/vending_machine: 
+        name: Vending Machine
+        terms: "<translate with synonyms or related terms for 'Vending Machine', separated by commas>"
       amenity/waste_basket: 
         name: Waste Basket
         terms: "<translate with synonyms or related terms for 'Waste Basket', separated by commas>"
@@ -615,6 +625,9 @@ en:
       highway/steps: 
         name: Steps
         terms: "<translate with synonyms or related terms for 'Steps', separated by commas>"
+      highway/stop: 
+        name: Stop Sign
+        terms: "<translate with synonyms or related terms for 'Stop Sign', separated by commas>"
       highway/tertiary: 
         name: Tertiary Road
         terms: "<translate with synonyms or related terms for 'Tertiary Road', separated by commas>"
@@ -747,6 +760,9 @@ en:
       leisure/pitch/basketball: 
         name: Basketball Court
         terms: "<translate with synonyms or related terms for 'Basketball Court', separated by commas>"
+      leisure/pitch/skateboard: 
+        name: Skate Park
+        terms: "<translate with synonyms or related terms for 'Skate Park', separated by commas>"
       leisure/pitch/soccer: 
         name: Soccer Field
         terms: "<translate with synonyms or related terms for 'Soccer Field', separated by commas>"
@@ -762,6 +778,9 @@ en:
       leisure/slipway: 
         name: Slipway
         terms: "<translate with synonyms or related terms for 'Slipway', separated by commas>"
+      leisure/sports_center: 
+        name: Sports Center
+        terms: "<translate with synonyms or related terms for 'Sports Center', separated by commas>"
       leisure/stadium: 
         name: Stadium
         terms: "<translate with synonyms or related terms for 'Stadium', separated by commas>"
@@ -825,6 +844,9 @@ en:
       natural/coastline: 
         name: Coastline
         terms: "<translate with synonyms or related terms for 'Coastline', separated by commas>"
+      natural/fell: 
+        name: Fell
+        terms: "<translate with synonyms or related terms for 'Fell', separated by commas>"
       natural/glacier: 
         name: Glacier
         terms: "<translate with synonyms or related terms for 'Glacier', separated by commas>"
@@ -837,6 +859,9 @@ en:
       natural/peak: 
         name: Peak
         terms: "<translate with synonyms or related terms for 'Peak', separated by commas>"
+      natural/scree: 
+        name: Scree
+        terms: "<translate with synonyms or related terms for 'Scree', separated by commas>"
       natural/scrub: 
         name: Scrub
         terms: "<translate with synonyms or related terms for 'Scrub', separated by commas>"
@@ -924,6 +949,9 @@ en:
       railway/disused: 
         name: Disused Railway
         terms: "<translate with synonyms or related terms for 'Disused Railway', separated by commas>"
+      railway/halt: 
+        name: Railway Halt
+        terms: "<translate with synonyms or related terms for 'Railway Halt', separated by commas>"
       railway/level_crossing: 
         name: Level Crossing
         terms: "<translate with synonyms or related terms for 'Level Crossing', separated by commas>"
@@ -1194,6 +1222,9 @@ en:
       type/route/foot: 
         name: Foot Route
         terms: "<translate with synonyms or related terms for 'Foot Route', separated by commas>"
+      type/route/hiking: 
+        name: Hiking Route
+        terms: "<translate with synonyms or related terms for 'Hiking Route', separated by commas>"
       type/route/pipeline: 
         name: Pipeline Route
         terms: "<translate with synonyms or related terms for 'Pipeline Route', separated by commas>"

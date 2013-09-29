@@ -109,6 +109,11 @@
         "type": "check",
         "label": "ATM"
     },
+    "backrest": {
+        "key": "backrest",
+        "type": "check",
+        "label": "Backrest"
+    },
     "barrier": {
         "key": "barrier",
         "type": "combo",
@@ -612,6 +617,11 @@
         "key": "trail_visibility",
         "type": "combo",
         "label": "Trail Visibility"
+    },
+    "vending": {
+        "key": "vending",
+        "type": "combo",
+        "label": "Type of Goods"
     },
     "water": {
         "key": "water",

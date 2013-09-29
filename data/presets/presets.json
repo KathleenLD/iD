@@ -269,6 +269,9 @@
         "tags": {
             "amenity": "bench"
         },
+        "fields": [
+            "backrest"
+        ],
         "name": "Bench"
     },
     "amenity/bicycle_parking": {
@@ -304,6 +307,19 @@
             "amenity": "bicycle_rental"
         },
         "name": "Bicycle Rental"
+    },
+    "amenity/boat_rental": {
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "boat_rental"
+        },
+        "fields": [
+            "operator"
+        ],
+        "name": "Boat Rental"
     },
     "amenity/cafe": {
         "icon": "cafe",
@@ -542,6 +558,15 @@
             "point",
             "vertex",
             "area"
+        ],
+        "terms": [
+            "petrol",
+            "fuel",
+            "propane",
+            "diesel",
+            "lng",
+            "cng",
+            "biodiesel"
         ],
         "tags": {
             "amenity": "fuel"
@@ -959,7 +984,9 @@
         ],
         "terms": [
             "visitor center",
+            "visitor centre",
             "permit center",
+            "permit centre",
             "backcountry office"
         ],
         "tags": {
@@ -995,6 +1022,7 @@
             "eating house",
             "eating place",
             "fast-food place",
+            "fish and chips",
             "greasy spoon",
             "grill",
             "hamburger stand",
@@ -1162,7 +1190,8 @@
             "city government",
             "courthouse",
             "municipal building",
-            "municipal center"
+            "municipal center",
+            "municipal centre"
         ],
         "tags": {
             "amenity": "townhall"
@@ -1187,6 +1216,19 @@
             "college"
         ],
         "name": "University"
+    },
+    "amenity/vending_machine": {
+        "fields": [
+            "vending",
+            "operator"
+        ],
+        "geometry": [
+            "point"
+        ],
+        "tags": {
+            "amenity": "vending_machine"
+        },
+        "name": "Vending Machine"
     },
     "amenity/waste_basket": {
         "icon": "waste-basket",
@@ -2089,6 +2131,18 @@
         ],
         "name": "Steps"
     },
+    "highway/stop": {
+        "geometry": [
+            "vertex"
+        ],
+        "tags": {
+            "highway": "stop"
+        },
+        "terms": [
+            "stop sign"
+        ],
+        "name": "Stop Sign"
+    },
     "highway/tertiary": {
         "icon": "highway-tertiary",
         "fields": [
@@ -2701,6 +2755,22 @@
         "terms": [],
         "name": "Basketball Court"
     },
+    "leisure/pitch/skateboard": {
+        "icon": "pitch",
+        "fields": [
+            "surface"
+        ],
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "leisure": "pitch",
+            "sport": "skateboard"
+        },
+        "terms": [],
+        "name": "Skate Park"
+    },
     "leisure/pitch/soccer": {
         "icon": "soccer",
         "fields": [
@@ -2772,6 +2842,20 @@
             "leisure": "slipway"
         },
         "name": "Slipway"
+    },
+    "leisure/sports_center": {
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "leisure": "sports_centre"
+        },
+        "terms": [
+            "gym"
+        ],
+        "icon": "sports",
+        "name": "Sports Center"
     },
     "leisure/stadium": {
         "geometry": [
@@ -3028,6 +3112,16 @@
         },
         "name": "Coastline"
     },
+    "natural/fell": {
+        "geometry": [
+            "area"
+        ],
+        "terms": [],
+        "tags": {
+            "natural": "fell"
+        },
+        "name": "Fell"
+    },
     "natural/glacier": {
         "geometry": [
             "area"
@@ -3087,6 +3181,18 @@
             "top"
         ],
         "name": "Peak"
+    },
+    "natural/scree": {
+        "geometry": [
+            "area"
+        ],
+        "tags": {
+            "natural": "scree"
+        },
+        "terms": [
+            "loose rocks"
+        ],
+        "name": "Scree"
     },
     "natural/scrub": {
         "geometry": [
@@ -3463,6 +3569,24 @@
         "terms": [],
         "name": "Disused Railway"
     },
+    "railway/halt": {
+        "icon": "rail",
+        "geometry": [
+            "point",
+            "vertex"
+        ],
+        "tags": {
+            "railway": "halt"
+        },
+        "name": "Railway Halt",
+        "terms": [
+            "break",
+            "interrupt",
+            "rest",
+            "wait",
+            "interruption"
+        ]
+    },
     "railway/level_crossing": {
         "icon": "cross",
         "geometry": [
@@ -3661,6 +3785,12 @@
             "point",
             "vertex",
             "area"
+        ],
+        "terms": [
+            "nail spa",
+            "spa",
+            "salon",
+            "tanning"
         ],
         "tags": {
             "shop": "beauty"
@@ -4057,6 +4187,9 @@
             "vertex",
             "area"
         ],
+        "terms": [
+            "garden centre"
+        ],
         "tags": {
             "shop": "garden_centre"
         },
@@ -4413,6 +4546,7 @@
             "outlet store",
             "shop",
             "shopping center",
+            "shopping centre",
             "shopping plaza",
             "stand",
             "store",
@@ -4959,6 +5093,22 @@
             "route": "foot"
         },
         "name": "Foot Route",
+        "icon": "route-foot",
+        "fields": [
+            "ref",
+            "operator",
+            "network"
+        ]
+    },
+    "type/route/hiking": {
+        "geometry": [
+            "relation"
+        ],
+        "tags": {
+            "type": "route",
+            "route": "hiking"
+        },
+        "name": "Hiking Route",
         "icon": "route-foot",
         "fields": [
             "ref",

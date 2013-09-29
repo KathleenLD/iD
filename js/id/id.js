@@ -13,14 +13,19 @@ window.iD = function () {
         return {
             getItem: function(k) { return s[k]; },
             setItem: function(k, v) { s[k] = v; },
-            removeItem: function(k) { delete s[k] }
+            removeItem: function(k) { delete s[k]; }
         };
     })();
 
     context.storage = function(k, v) {
-        if (arguments.length === 1) return storage.getItem(k);
-        else if (v === null) storage.removeItem(k);
-        else storage.setItem(k, v);
+        try {
+            if (arguments.length === 1) return storage.getItem(k);
+            else if (v === null) storage.removeItem(k);
+            else storage.setItem(k, v);
+        } catch(e) {
+            // localstorage quota exceeded
+            if (typeof console !== 'undefined') console.error('localStorage quota exceeded');
+        }
     };
 
     var history = iD.History(context),
@@ -78,6 +83,20 @@ window.iD = function () {
     context.redo = history.redo;
     context.changes = history.changes;
     context.intersects = history.intersects;
+
+    var inIntro = false;
+
+    context.inIntro = function(_) {
+        if (!arguments.length) return inIntro;
+        inIntro = _;
+        return context;
+    };
+
+    context.save = function() {
+        if (inIntro) return;
+        history.save();
+        if (history.hasChanges()) return t('save.unsaved_changes');
+    };
 
     context.flush = function() {
         connection.flush();
@@ -234,7 +253,7 @@ window.iD = function () {
     return d3.rebind(context, dispatch, 'on');
 };
 
-iD.version = '1.1.6';
+iD.version = '1.2.0';
 
 (function() {
     var detected = {};

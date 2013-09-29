@@ -7,6 +7,7 @@ iD.actions.Orthogonalize = function(wayId, projection) {
         var way = graph.entity(wayId),
             nodes = graph.childNodes(way),
             corner = {i: 0, dotp: 1},
+            epsilon = 1e-8,
             points, i, j, score, motions;
 
         if (nodes.length === 4) {
@@ -25,8 +26,8 @@ iD.actions.Orthogonalize = function(wayId, projection) {
                 .move(projection.invert(points[corner.i])));
         } else {
             var best;
-            points = nodes.map(function(n) { return projection(n.loc); });
-            score = squareness();
+            points = _.uniq(nodes).map(function(n) { return projection(n.loc); });
+            score = Infinity;
 
             for (i = 0; i < 1000; i++) {
                 motions = points.map(calcMotion);
@@ -38,16 +39,40 @@ iD.actions.Orthogonalize = function(wayId, projection) {
                     best = _.clone(points);
                     score = newScore;
                 }
-                if (score < 1.0e-8) {
+                if (score < epsilon) {
                     break;
                 }
             }
 
             points = best;
 
-            for (i = 0; i < points.length - 1; i++) {
+            for (i = 0; i < points.length; i++) {
                 graph = graph.replace(graph.entity(nodes[i].id)
                     .move(projection.invert(points[i])));
+            }
+
+            // remove empty nodes on straight sections
+            for (i = 0; i < points.length; i++) {
+                var node = nodes[i],
+                    a, b, c, p, q, dotp;
+
+                if (graph.parentWays(node).length > 1 || 
+                    graph.parentRelations(node).length || 
+                    node.hasInterestingTags()) {
+
+                    continue;
+                }
+
+                a = points[(i - 1 + points.length) % points.length];
+                b = points[i];
+                c = points[(i + 1) % points.length];
+                p = normalizePoint(subtractPoints(a, b), 1.0);
+                q = normalizePoint(subtractPoints(c, b), 1.0);
+                dotp = p[0] * q[0] + p[1] * q[1];
+
+                if (dotp < -1 + epsilon) {
+                    graph = iD.actions.DeleteNode(nodes[i].id)(graph);
+                }
             }
         }
 
@@ -59,7 +84,7 @@ iD.actions.Orthogonalize = function(wayId, projection) {
                 p = subtractPoints(a, b),
                 q = subtractPoints(c, b);
 
-            var scale = iD.geo.dist(p, [0, 0]) + iD.geo.dist(q, [0, 0]);
+            var scale = 2*Math.min(iD.geo.euclideanDistance(p, [0, 0]), iD.geo.euclideanDistance(q, [0, 0]));
             p = normalizePoint(p, 1.0);
             q = normalizePoint(q, 1.0);
 
@@ -128,8 +153,7 @@ iD.actions.Orthogonalize = function(wayId, projection) {
     };
 
     action.disabled = function(graph) {
-        if (!graph.entity(wayId).isClosed())
-            return 'not_closed';
+        return false;
     };
 
     return action;
